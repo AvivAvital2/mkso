@@ -2,6 +2,10 @@
 
 Code-enforced boundaries for LLM-assisted development.
 
+`mkso` is short for **Make It So**. The name reflects the project's purpose:
+turning agreed requirements into code, with explicit constraints and evidence
+rather than relying on an LLM's assurances.
+
 A convincing explanation is not evidence that a feature meets its requirements.
 Nor does a passing test, by itself, establish that an implementation stayed
 within the agreed scope. mkso is being built to connect requirements, permitted
@@ -14,6 +18,44 @@ mkso's intended role is the orchestration layer controlling the development
 workflow, not another tool whose checks the model can choose to skip. This
 repository contains implemented components and an experimental structural
 drafting path. The complete end-to-end enforcement system is not yet finished.
+
+## Why mkso matters
+
+LLMs can produce substantial changes quickly. The harder problem is knowing
+whether those changes implement what was agreed, without silently omitting a
+requirement, changing unrelated behavior, or weakening the checks that would
+expose a mistake. A plausible implementation can still solve the wrong problem.
+
+A prompt can ask a model to respect a boundary, but the prompt does not enforce
+that boundary. Tests are essential, but a passing suite only tells us about what
+it actually checked. It does not establish that every agreed requirement was
+covered, and an old passing result cannot validate code that has since changed.
+
+mkso is intended to make those gaps explicit and enforceable in code:
+
+- **Scope before edits.** Each task starts with a scaffold and indexed code
+  boundaries. The implementer submits changes through controlled interfaces,
+  rather than receiving unrestricted authority over the repository.
+- **Requirements tied to implementation.** SCIP connects obligations to concrete
+  source symbols and references. Evidence must describe the relevant code and
+  inputs, not merely a task name or a model's claim of completion.
+- **Acceptance outside the implementer's control.** The model may propose code,
+  but it cannot approve its own work or redefine success. Separately controlled
+  checks supply evidence for deterministic acceptance decisions; changes to
+  agreed scope remain subject to user approval.
+- **Continuity across iterations.** Small changes build on their predecessors.
+  A new task must account for the guarantees already accepted, and relevant
+  evidence must be reconsidered when its underlying code or inputs change.
+
+The practical benefit is a reviewable answer to three questions: what was
+requested, what was allowed to change, and what evidence supports the result?
+That reduces reliance on conversational memory and repeated manual supervision.
+It complements compilers, tests, and CI by connecting their results to explicit
+requirements and a controlled implementation workflow.
+
+This is not a promise that arbitrary software can be proven completely correct.
+Any assurance is bounded by the specified requirements, the checks performed,
+and the trustworthiness of the enforcement and evaluation environment.
 
 ## How it works
 
