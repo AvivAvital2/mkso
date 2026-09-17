@@ -1,0 +1,106 @@
+{
+  "schema_version": "mkso-bootstrap-operator-package-lock/1",
+  "authority": "NONE",
+  "base": "python@sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+  "platform": "linux/amd64",
+  "metadata_origin": "Debian trixie APT metadata obtained with the pinned base's normal authenticated apt-get update; exact versions, filenames, sizes and SHA-256 fields read with apt-cache show. Native dependency resolution reported ten new packages and no upgrades/removals.",
+  "metadata_retention": "The acquisition output is in the development-session tool record; signed index bytes are not retained here. This is a build-input lock, not independently qualified package provenance.",
+  "packages": [
+    {
+      "name": "libedit2",
+      "version": "3.1-20250104-1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libe/libedit/libedit2_3.1-20250104-1_amd64.deb",
+      "filename": "libedit2_3.1-20250104-1_amd64.deb",
+      "size": 93832,
+      "sha256": "b002ea172b9c1e34a67bc497c523c67bb74c3f0a4e98113cb083990a1f1d3bfe"
+    },
+    {
+      "name": "libcbor0.10",
+      "version": "0.10.2-2",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libc/libcbor/libcbor0.10_0.10.2-2_amd64.deb",
+      "filename": "libcbor0.10_0.10.2-2_amd64.deb",
+      "size": 28296,
+      "sha256": "2457686e375dcb7567ba01da6638a0711e2a55725d084d65de44dd11bb1f52e2"
+    },
+    {
+      "name": "libfido2-1",
+      "version": "1.15.0-1+b1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libf/libfido2/libfido2-1_1.15.0-1+b1_amd64.deb",
+      "filename": "libfido2-1_1.15.0-1+b1_amd64.deb",
+      "size": 78728,
+      "sha256": "094fc0fe20c652be848ab2a8b3793eb03bc4327140ebd232145356352004e6c0"
+    },
+    {
+      "name": "libkrb5support0",
+      "version": "1.21.3-5+deb13u1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/k/krb5/libkrb5support0_1.21.3-5+deb13u1_amd64.deb",
+      "filename": "libkrb5support0_1.21.3-5+deb13u1_amd64.deb",
+      "size": 33124,
+      "sha256": "3a0acd8b37955c0e102c756b52c97df2a31f67b96453c35dab70df218d309117"
+    },
+    {
+      "name": "libcom-err2",
+      "version": "1.47.2-3+b11",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/e/e2fsprogs/libcom-err2_1.47.2-3+b11_amd64.deb",
+      "filename": "libcom-err2_1.47.2-3+b11_amd64.deb",
+      "size": 25036,
+      "sha256": "e1feff126b3e8b3a7b18087e88681469b70d8f6d1b7c4e4b89d98577e1a2fdd7"
+    },
+    {
+      "name": "libk5crypto3",
+      "version": "1.21.3-5+deb13u1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/k/krb5/libk5crypto3_1.21.3-5+deb13u1_amd64.deb",
+      "filename": "libk5crypto3_1.21.3-5+deb13u1_amd64.deb",
+      "size": 81152,
+      "sha256": "7da07ee674b47f1f0be7cc89317c25310086a1f1761217d0f72e6ae2c5a69b84"
+    },
+    {
+      "name": "libkeyutils1",
+      "version": "1.6.3-6",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/k/keyutils/libkeyutils1_1.6.3-6_amd64.deb",
+      "filename": "libkeyutils1_1.6.3-6_amd64.deb",
+      "size": 9456,
+      "sha256": "0b11ad17be0300b63ad4eeb4c6450fed24d34b7b740f23e5363dcb29ee6d5eba"
+    },
+    {
+      "name": "libkrb5-3",
+      "version": "1.21.3-5+deb13u1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/k/krb5/libkrb5-3_1.21.3-5+deb13u1_amd64.deb",
+      "filename": "libkrb5-3_1.21.3-5+deb13u1_amd64.deb",
+      "size": 326056,
+      "sha256": "47d71d6a7f2e59b9bae5f89602397594805113b95889ad18fa703cd53abafc97"
+    },
+    {
+      "name": "libgssapi-krb5-2",
+      "version": "1.21.3-5+deb13u1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/k/krb5/libgssapi-krb5-2_1.21.3-5+deb13u1_amd64.deb",
+      "filename": "libgssapi-krb5-2_1.21.3-5+deb13u1_amd64.deb",
+      "size": 138356,
+      "sha256": "30847c1fde4240567d7ed3aeab4f655dd591203758b857e85e824045aae70299"
+    },
+    {
+      "name": "openssh-client",
+      "version": "1:10.0p1-7+deb13u4",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/o/openssh/openssh-client_10.0p1-7+deb13u4_amd64.deb",
+      "filename": "openssh-client_10.0p1-7+deb13u4_amd64.deb",
+      "size": 989904,
+      "sha256": "8fff343654f86c3b3266f94cd338c7b4da2e386da029327815118ea00bce03b9"
+    }
+  ],
+  "existing_dependency_authority": "The exact base image binds all preinstalled dependency bytes. Native dpkg dependency/configuration checks must complete; no network repair or implicit dependency upgrade is allowed during installation.",
+  "references": [
+    "https://packages.debian.org/trixie/net/openssh-client",
+    "https://packages.debian.org/trixie/amd64/openssh-client/download",
+    "https://manpages.debian.org/trixie/openssh-client/ssh-keygen.1.en.html"
+  ]
+}

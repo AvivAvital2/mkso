@@ -1,0 +1,44 @@
+# Operator tool-runtime scaffold; not an approval service or admitted deployment.
+FROM python@sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea
+
+# MKSO-PACKAGES-BEGIN
+# Breadcrumb: add only the exact Debian archives recorded in packages.lock.json.
+# Verify each archive digest before installation; installation has no network.
+# Do not add application code, trust inputs, keys, sockets or service activation.
+ADD --checksum=sha256:b002ea172b9c1e34a67bc497c523c67bb74c3f0a4e98113cb083990a1f1d3bfe --chmod=0444 https://deb.debian.org/debian/pool/main/libe/libedit/libedit2_3.1-20250104-1_amd64.deb /opt/mkso-package-archives/libedit2_3.1-20250104-1_amd64.deb
+ADD --checksum=sha256:2457686e375dcb7567ba01da6638a0711e2a55725d084d65de44dd11bb1f52e2 --chmod=0444 https://deb.debian.org/debian/pool/main/libc/libcbor/libcbor0.10_0.10.2-2_amd64.deb /opt/mkso-package-archives/libcbor0.10_0.10.2-2_amd64.deb
+ADD --checksum=sha256:094fc0fe20c652be848ab2a8b3793eb03bc4327140ebd232145356352004e6c0 --chmod=0444 https://deb.debian.org/debian/pool/main/libf/libfido2/libfido2-1_1.15.0-1+b1_amd64.deb /opt/mkso-package-archives/libfido2-1_1.15.0-1+b1_amd64.deb
+ADD --checksum=sha256:3a0acd8b37955c0e102c756b52c97df2a31f67b96453c35dab70df218d309117 --chmod=0444 https://deb.debian.org/debian/pool/main/k/krb5/libkrb5support0_1.21.3-5+deb13u1_amd64.deb /opt/mkso-package-archives/libkrb5support0_1.21.3-5+deb13u1_amd64.deb
+ADD --checksum=sha256:e1feff126b3e8b3a7b18087e88681469b70d8f6d1b7c4e4b89d98577e1a2fdd7 --chmod=0444 https://deb.debian.org/debian/pool/main/e/e2fsprogs/libcom-err2_1.47.2-3+b11_amd64.deb /opt/mkso-package-archives/libcom-err2_1.47.2-3+b11_amd64.deb
+ADD --checksum=sha256:7da07ee674b47f1f0be7cc89317c25310086a1f1761217d0f72e6ae2c5a69b84 --chmod=0444 https://deb.debian.org/debian/pool/main/k/krb5/libk5crypto3_1.21.3-5+deb13u1_amd64.deb /opt/mkso-package-archives/libk5crypto3_1.21.3-5+deb13u1_amd64.deb
+ADD --checksum=sha256:0b11ad17be0300b63ad4eeb4c6450fed24d34b7b740f23e5363dcb29ee6d5eba --chmod=0444 https://deb.debian.org/debian/pool/main/k/keyutils/libkeyutils1_1.6.3-6_amd64.deb /opt/mkso-package-archives/libkeyutils1_1.6.3-6_amd64.deb
+ADD --checksum=sha256:47d71d6a7f2e59b9bae5f89602397594805113b95889ad18fa703cd53abafc97 --chmod=0444 https://deb.debian.org/debian/pool/main/k/krb5/libkrb5-3_1.21.3-5+deb13u1_amd64.deb /opt/mkso-package-archives/libkrb5-3_1.21.3-5+deb13u1_amd64.deb
+ADD --checksum=sha256:30847c1fde4240567d7ed3aeab4f655dd591203758b857e85e824045aae70299 --chmod=0444 https://deb.debian.org/debian/pool/main/k/krb5/libgssapi-krb5-2_1.21.3-5+deb13u1_amd64.deb /opt/mkso-package-archives/libgssapi-krb5-2_1.21.3-5+deb13u1_amd64.deb
+ADD --checksum=sha256:8fff343654f86c3b3266f94cd338c7b4da2e386da029327815118ea00bce03b9 --chmod=0444 https://deb.debian.org/debian/pool/main/o/openssh/openssh-client_10.0p1-7+deb13u4_amd64.deb /opt/mkso-package-archives/openssh-client_10.0p1-7+deb13u4_amd64.deb
+
+RUN --network=none dpkg --install \
+    /opt/mkso-package-archives/libedit2_3.1-20250104-1_amd64.deb \
+    /opt/mkso-package-archives/libcbor0.10_0.10.2-2_amd64.deb \
+    /opt/mkso-package-archives/libfido2-1_1.15.0-1+b1_amd64.deb \
+    /opt/mkso-package-archives/libkrb5support0_1.21.3-5+deb13u1_amd64.deb \
+    /opt/mkso-package-archives/libcom-err2_1.47.2-3+b11_amd64.deb \
+    /opt/mkso-package-archives/libk5crypto3_1.21.3-5+deb13u1_amd64.deb \
+    /opt/mkso-package-archives/libkeyutils1_1.6.3-6_amd64.deb \
+    /opt/mkso-package-archives/libkrb5-3_1.21.3-5+deb13u1_amd64.deb \
+    /opt/mkso-package-archives/libgssapi-krb5-2_1.21.3-5+deb13u1_amd64.deb \
+    /opt/mkso-package-archives/openssh-client_10.0p1-7+deb13u4_amd64.deb
+# MKSO-PACKAGES-END
+
+# MKSO-ACCOUNT-BEGIN
+# Breadcrumb: register the already-selected runtime UID/GID 65530 without login,
+# password assignment, home creation, signing keys or a change of final USER.
+RUN --network=none groupadd --gid 65530 mkso-operator \
+    && useradd --uid 65530 --gid 65530 --no-create-home \
+        --home-dir /nonexistent --shell /usr/sbin/nologin --no-log-init mkso-operator
+# MKSO-ACCOUNT-END
+
+LABEL org.mkso.authority="none" org.mkso.state="tool-runtime-unqualified"
+USER 65530:65530
+WORKDIR /tmp
+ENTRYPOINT ["/usr/bin/env", "-i", "/bin/false"]
+CMD []

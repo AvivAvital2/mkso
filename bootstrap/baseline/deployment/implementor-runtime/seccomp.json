@@ -1,0 +1,255 @@
+{
+  "defaultAction": "SCMP_ACT_ERRNO",
+  "defaultErrnoRet": 1,
+  "architectures": [
+    "SCMP_ARCH_X86_64"
+  ],
+  "syscalls": [
+    {
+      "names": [
+        "read",
+        "write",
+        "readv",
+        "writev",
+        "close",
+        "close_range",
+        "fstat",
+        "newfstatat",
+        "stat",
+        "lstat",
+        "statx",
+        "lseek",
+        "pread64",
+        "mmap",
+        "mprotect",
+        "munmap",
+        "brk",
+        "mremap",
+        "madvise",
+        "rt_sigaction",
+        "rt_sigprocmask",
+        "rt_sigreturn",
+        "sigaltstack",
+        "ioctl",
+        "access",
+        "faccessat",
+        "faccessat2",
+        "pipe",
+        "pipe2",
+        "dup",
+        "dup2",
+        "dup3",
+        "select",
+        "pselect6",
+        "poll",
+        "ppoll",
+        "epoll_create1",
+        "epoll_ctl",
+        "epoll_wait",
+        "epoll_pwait",
+        "nanosleep",
+        "clock_nanosleep",
+        "clock_gettime",
+        "gettimeofday",
+        "time",
+        "alarm",
+        "setitimer",
+        "getpid",
+        "getppid",
+        "gettid",
+        "getuid",
+        "geteuid",
+        "getgid",
+        "getegid",
+        "getgroups",
+        "getcwd",
+        "chdir",
+        "fchdir",
+        "readlink",
+        "readlinkat",
+        "getdents",
+        "getdents64",
+        "open",
+        "openat",
+        "fcntl",
+        "uname",
+        "arch_prctl",
+        "set_tid_address",
+        "set_robust_list",
+        "rseq",
+        "futex",
+        "futex_waitv",
+        "prlimit64",
+        "getrlimit",
+        "setrlimit",
+        "getrandom",
+        "sched_getaffinity",
+        "sched_yield",
+        "restart_syscall",
+        "execve",
+        "exit",
+        "exit_group",
+        "fstatfs",
+        "capget",
+        "capset"
+      ],
+      "action": "SCMP_ACT_ALLOW"
+    },
+    {
+      "names": [
+        "unshare"
+      ],
+      "action": "SCMP_ACT_ALLOW",
+      "args": [
+        {
+          "index": 0,
+          "value": 268435456,
+          "op": "SCMP_CMP_EQ"
+        }
+      ]
+    },
+    {
+      "names": [
+        "prctl"
+      ],
+      "action": "SCMP_ACT_ALLOW",
+      "args": [
+        {
+          "index": 0,
+          "value": 7,
+          "op": "SCMP_CMP_EQ"
+        }
+      ]
+    },
+    {
+      "names": [
+        "prctl"
+      ],
+      "action": "SCMP_ACT_ALLOW",
+      "args": [
+        {
+          "index": 0,
+          "value": 8,
+          "op": "SCMP_CMP_EQ"
+        }
+      ]
+    },
+    {
+      "names": [
+        "prctl"
+      ],
+      "action": "SCMP_ACT_ALLOW",
+      "args": [
+        {
+          "index": 0,
+          "value": 22,
+          "op": "SCMP_CMP_EQ"
+        }
+      ]
+    },
+    {
+      "names": [
+        "prctl"
+      ],
+      "action": "SCMP_ACT_ALLOW",
+      "args": [
+        {
+          "index": 0,
+          "value": 23,
+          "op": "SCMP_CMP_EQ"
+        }
+      ]
+    },
+    {
+      "names": [
+        "prctl"
+      ],
+      "action": "SCMP_ACT_ALLOW",
+      "args": [
+        {
+          "index": 0,
+          "value": 24,
+          "op": "SCMP_CMP_EQ"
+        }
+      ]
+    },
+    {
+      "names": [
+        "prctl"
+      ],
+      "action": "SCMP_ACT_ALLOW",
+      "args": [
+        {
+          "index": 0,
+          "value": 27,
+          "op": "SCMP_CMP_EQ"
+        }
+      ]
+    },
+    {
+      "names": [
+        "prctl"
+      ],
+      "action": "SCMP_ACT_ALLOW",
+      "args": [
+        {
+          "index": 0,
+          "value": 28,
+          "op": "SCMP_CMP_EQ"
+        }
+      ]
+    },
+    {
+      "names": [
+        "prctl"
+      ],
+      "action": "SCMP_ACT_ALLOW",
+      "args": [
+        {
+          "index": 0,
+          "value": 38,
+          "op": "SCMP_CMP_EQ"
+        }
+      ]
+    },
+    {
+      "names": [
+        "prctl"
+      ],
+      "action": "SCMP_ACT_ALLOW",
+      "args": [
+        {
+          "index": 0,
+          "value": 39,
+          "op": "SCMP_CMP_EQ"
+        }
+      ]
+    },
+    {
+      "names": [
+        "prctl"
+      ],
+      "action": "SCMP_ACT_ALLOW",
+      "args": [
+        {
+          "index": 0,
+          "value": 47,
+          "op": "SCMP_CMP_EQ"
+        }
+      ]
+    },
+    {
+      "names": [
+        "prctl"
+      ],
+      "action": "SCMP_ACT_ALLOW",
+      "args": [
+        {
+          "index": 0,
+          "value": 21,
+          "op": "SCMP_CMP_EQ"
+        }
+      ]
+    }
+  ]
+}

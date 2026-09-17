@@ -1,0 +1,46 @@
+# Credentials are never part of a repository-root Docker build context.
+.env
+.env.*
+**/.env
+**/.env.*
+.mkso
+**/.mkso
+.git
+
+# Exclude local operator identity and key material from build contexts.
+public
+bootstrap/baseline/deployment/approval-provisioning-request.json
+**/*.key
+**/*.pem
+**/*.p12
+**/*.pfx
+**/*.jks
+**/*.keystore
+**/*.pub
+**/id_rsa
+**/id_dsa
+**/id_ecdsa
+**/id_ed25519
+
+# Confidential planning and historical execution material are not build inputs.
+**/*.md
+**/*.review.*
+**/*.plan.*
+**/*.observation.json
+**/*.scip
+**/*.b64
+**/artifacts
+**/tasks
+**/review
+**/qualification
+**/patches
+**/predecessor
+**/candidate
+bootstrap/atomic
+bootstrap/design-ledger
+verification
+schemas
+*-rules.json
+decision-lock.json
+subject-binding-registry.json
+bootstrap/baseline/deployment/implementor-runtime/deployment.json

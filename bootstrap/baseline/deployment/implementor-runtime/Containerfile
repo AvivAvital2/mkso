@@ -1,0 +1,30 @@
+# Conventional draft-runtime preparation, not accepted mkso deployment.
+FROM python@sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea
+
+# MKSO-SESSION-BEGIN
+# Breadcrumb: install only the hash-bound bridge and container-session source.
+# No broker, repository, provider key, Docker socket or evaluator material.
+COPY --chmod=0444 direct_bridge.py /usr/local/lib/python3.12/site-packages/bootstrap/baseline/direct_bridge.py
+COPY --chmod=0444 container_session.py /usr/local/lib/python3.12/site-packages/bootstrap/baseline/container_session.py
+# MKSO-SESSION-END
+
+# MKSO-FILTER-BEGIN
+# Breadcrumb: copy only the generated, hash-bound post-launch userns-block filter.
+# It must be installed by the native launcher before application control.
+COPY --chmod=0444 post-launch.bpf /opt/mkso/post-launch.bpf
+# MKSO-FILTER-END
+
+# MKSO-DIRECTORIES-BEGIN
+# Breadcrumb: native inventory could not traverse COPY-created public directories.
+# Make only the three new public-code/filter directories searchable, not writable.
+RUN --network=none chmod 0755 /opt/mkso /usr/local/lib/python3.12/site-packages/bootstrap /usr/local/lib/python3.12/site-packages/bootstrap/baseline
+# MKSO-DIRECTORIES-END
+
+USER 65532:65532
+WORKDIR /tmp
+LABEL org.mkso.authority="none" org.mkso.state="draft-runtime-unqualified"
+# MKSO-ENTRYPOINT-BEGIN
+# Breadcrumb: replace unavailable entrypoint with the fixed isolated Python module.
+ENTRYPOINT ["/usr/bin/env", "-i", "/usr/bin/unshare", "--user", "--map-current-user", "--keep-caps", "/usr/bin/setpriv", "--bounding-set=-all", "--inh-caps=-all", "--ambient-caps=-all", "--seccomp-filter", "/opt/mkso/post-launch.bpf", "/usr/local/bin/python", "-I", "-B", "-m", "bootstrap.baseline.container_session"]
+# MKSO-ENTRYPOINT-END
+CMD []

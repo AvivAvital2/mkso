@@ -1,0 +1,4 @@
+# The build needs no repository content beyond this Dockerfile.
+**
+!Containerfile
+!.dockerignore
